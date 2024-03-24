@@ -2,8 +2,9 @@
                              CS51 Lab 15
                  Computing Pi Using Taylor Expansion
 
-A Taylor series is a representation of a function as an infinite
-sum of individual terms. For instance,
+A Taylor series is a representation of a function as an infinite sum
+of individual terms. For instance, the arctangent function can be
+characterized as the following infinite sum:
 
     arctan x = x - x^3/3 + x^5/5 - x^7/7 + ...
 
@@ -23,7 +24,7 @@ terms to approximate pi.
       YOU SHOULD NOT NEED TO CHANGE ANYTHING IN THIS FILE.
 
       NOTE THAT THIS FILE WILL NOT COMPILE UNTIL YOU HAVE COMPLETED
-      THE NativeLazyStreams MODULE IN nativeLazyStreams.ml.
+      THE `NativeLazyStreams` MODULE IN `nativeLazyStreams.ml`.
       *************************************************************
  *)
 
@@ -31,7 +32,7 @@ open NativeLazyStreams ;;
 
 (* nats -- The natural numbers *)
 let rec nats : int stream =
-  lazy (Cons(0, smap ((+) 1) nats)) ;;
+  lazy (Cons (0, smap ((+) 1) nats)) ;;
 
 (* to_float s -- Converts a stream `s` of `int`s to the corresponding
    `float`s. *)
@@ -68,7 +69,7 @@ let pi_approx (n : int) : float =
 
 (* sums s -- A stream of the partial sums of the stream `s`. *)
 let rec sums (s : float stream) : float stream =
-  smap2 ( +. ) s (lazy (Cons(0.0, sums s))) ;;
+  smap2 ( +. ) s (lazy (Cons (0.0, sums s))) ;;
 
 (* pi_sums -- A stream of better and better approximations of pi. *)
 let pi_sums : float stream =

@@ -27,18 +27,18 @@ open CS51Utils ;;       (* for access to timing functions *)
 (*====================================================================
 Part 1: Using OCaml's Lazy module
 
-All of the recomputation going on behind the scenes with these
-stream-based solutions is prohibitive. Chapter 17 of the textbook
-describes the use of *memoizing* to eliminate the recomputation, and
-showed an implementation in terms of refs. As described in Section
-17.3, that functionality is actually already available in OCaml
-through its `Lazy` module. The `Lazy` module introduces a new
-polymorphic type `'a Lazy.t` of delayed values of type 'a, and a new
-function `Lazy.force : 'a Lazy.t -> 'a` that forces a delayed
-computation to occur, saving the result if this is the first time the
-value was forced and simply returning the saved value on later
-requests. For instance, suppose we've defined the Fibonacci function
-"eagerly" as: *)
+All of the recomputation going on behind the scenes with the
+stream-based solutions in the previous lab is prohibitive. Chapter 17
+of the textbook describes the use of *memoizing* to eliminate the
+recomputation, and showed an implementation of memoizing *thunks* in
+terms of refs. As described in Section 17.3, that functionality is
+actually already available in OCaml through its `Lazy` module. The
+`Lazy` module introduces a new polymorphic type `'a Lazy.t` of delayed
+values of type 'a, and a new function `Lazy.force : 'a Lazy.t -> 'a`
+that forces a delayed computation to occur, saving the result if this
+is the first time the value was forced and simply returning the saved
+value on later requests. For instance, suppose we've defined the
+Fibonacci function "eagerly" as: *)
 
 let rec fib (n : int) : int =
   if n < 2 then n
