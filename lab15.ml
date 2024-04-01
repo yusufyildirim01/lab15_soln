@@ -93,7 +93,8 @@ open NativeLazyStreams
 `NativeLazystreams.stream`. *)
   
 let rec fibs : int stream =
-  lazy (Cons (0, lazy (Cons (1, smap2 (+) fibs (tail fibs))))) ;;
+  lazy (Cons (0, lazy (Cons (1, smap2 (+) fibs (tail fibs))))) 
+;;
 
 (* We run it twice, generating the first 50 Fibonacci numbers: 
 
